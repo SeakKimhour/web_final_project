@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors())
 
 
-app.use('/api/v1/vehicle', vehicleRoutes)
+app.use('/api/v1/vehicle/register', vehicleRoutes)
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)

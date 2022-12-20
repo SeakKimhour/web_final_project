@@ -5,11 +5,10 @@ const pool = require('../../db');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('../../utils/jwtGenerator');
 const authorization= require('../../middleware/authorization');
-
 //jwt
 routes.post('/register', async (req, res) => {
     try {
-
+        
         //1. destructure the req.body (name,email,password)
 
         const { username, user_password } = req.body;
@@ -82,10 +81,10 @@ routes.get('/is-verify', authorization,async(req, res) => {
        res.status(500).send("Server error")
    }
 })
-routes.get('/',controller.getVehicle );
-routes.get('/:id',controller.getVehicleById)
-routes.post('/',controller.addVehicle)
-routes.delete('/:id',controller.deleteVehicle)
-routes.put('/:id',controller.updateVehicle)
-routes.delete('/delete/all',controller.deleteALL)
+routes.get('/',authorization,controller.getVehicle );
+routes.get('/:id',authorization,controller.getVehicleById)
+routes.post('/',authorization,controller.addVehicle)
+routes.delete('/:id',authorization,controller.deleteVehicle)
+routes.put('/:id',authorization,controller.updateVehicle)
+routes.delete('/delete/all',authorization,controller.deleteALL)
 module.exports=routes;

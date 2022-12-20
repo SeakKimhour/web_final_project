@@ -6,6 +6,7 @@ const getVehicle = (req, res,) => {
         res.status(200).json(results.rows)
     })
 }
+
 const getVehicleById = (req, res) => {
     const id = parseInt(req.params.id);
     pool.query(queries.getVehicleById, [id], (error, result) => {
@@ -43,6 +44,7 @@ const deleteVehicle = (req, res) => {
         }
     })
 }
+
 const updateVehicle = (req, res) => {
     const id = parseInt(req.params.id);
     let { type, model, price } = req.body
